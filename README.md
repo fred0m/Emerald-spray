@@ -68,3 +68,9 @@ detailsGeter()方法获取信息，
 ```language
 git clone https://github.com/fred0m/Emerald-spray.git
 ```
+
+或者
+
+```language
+pip install Emerald-spray
+```
