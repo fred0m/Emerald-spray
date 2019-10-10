@@ -1,3 +1,6 @@
+![](https://img.shields.io/github/license/fred0m/Emerald-spray)
+![](https://img.shields.io/badge/language-python-blue.svg)
+
 # Emerald-spray
 方便的将steam商店页面信息解析出来，并可保存于本地
 
