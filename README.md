@@ -1,3 +1,6 @@
+# V1.0.2更新 
+* 修复部分bug
+* 包名改为Es
 
 # Emerald-spray
 方便的将steam商店页面信息解析出来，并可保存于本地
@@ -27,6 +30,15 @@ demo.raw_data
 * steam250URLGeter
 * steamTop100URLGeter
 * detailsDataGeter
+
+**注意：在使用DataAnalysis时请使用DataAnalysis.\*来访问如你应该**
+```
+demo = DataAnalysis.steam250URLGeter()
+```
+**而不是**
+```
+demo = steam250URLGeter()
+```
 ### steam250URLGeter
 用于获取指定steam250.com页面的所有游戏的url、游戏名、和游戏评分
 
@@ -73,4 +85,14 @@ git clone https://github.com/fred0m/Emerald-spray.git
 
 ```language
 pip install Emerald-spray
+```
+
+# 注意
+* 导入模块请使用
+```language
+from Es import *
+```
+不要使用
+```language
+import Es
 ```
