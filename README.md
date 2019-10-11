@@ -84,7 +84,7 @@ git clone https://github.com/fred0m/Emerald-spray.git
 或者
 
 ```language
-pip install Emerald-spray
+pip install Emeraldspray
 ```
 
 # 注意
