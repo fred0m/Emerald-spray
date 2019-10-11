@@ -8,8 +8,9 @@
 
 import requests
 from bs4 import BeautifulSoup
-from BugReporter import BugReporter
+from .BugReporter import BugReporter
 import os
+import time
 
 class WebGeter :
 

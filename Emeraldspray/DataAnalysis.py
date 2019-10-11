@@ -7,8 +7,8 @@
 #---------------------------------------------------------------------------------------------------
 
 from bs4 import BeautifulSoup
-from BugReporter import BugReporter
-from WebGeter import WebGeter
+from .BugReporter import BugReporter
+from .WebGeter import WebGeter
 import time
 import os
 
