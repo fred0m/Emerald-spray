@@ -23,7 +23,7 @@
 demo = WebGeter("https://fredom.ink")
 ```
 
-**请注意，接受的url必须包含完整的协议头，也就是说，你不能省略http://或者https://前缀**
+**请注意，接受的url必须包含完整的协议头，也就是说，你不能省略http:// 或者 https:// 前缀**
 
 接着你可以使用
 ```python
@@ -49,11 +49,15 @@ demo = steam250URLGeter()
 用于获取指定steam250.com页面的所有游戏的url、游戏名、和游戏评分
 
 ~~接受一个URL作为参数~~
+
 接受BeautifulSoup类作为参数，也可使用 WebGeter 模块的 self.raw_data作为参数
 
 有 dataHandle() 和 outputData() 两个方法
+
 但通常只需要调用主动调用outputData()方法用于输出
+
 ~~dataHandle() 会自动调用~~
+
 dataHandle()也需要调用主动调用
 
 同时生成成员 self.data 类型为列表
