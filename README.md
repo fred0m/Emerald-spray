@@ -1,7 +1,6 @@
-# V1.1.0更新 
-* 修复使用 DataAnalysis.detailsDataGeter.outputData()输出时出现错误的BUG
+# V1.0.2更新 
+* 修复部分bug
 * 包名改为Es
-* 删减部分冗余代码
 
 # Emerald-spray
 方便的将steam商店页面信息解析出来，并可保存于本地
@@ -93,7 +92,7 @@ pip install Emeraldspray
 ```language
 from Es import *
 ```
-尽量不要使用
+不要使用
 ```language
 import Es
 ```

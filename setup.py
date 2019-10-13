@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='Emeraldspray',
-    version='1.1.0',
+    version='1.2.1',
     author='fredom',
     author_email='he@fredom.ink',
     url='https://github.com/fred0m/Emerald-spray',

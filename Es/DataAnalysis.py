@@ -2,26 +2,26 @@
 #---------------------------------------------------------------------------------------------------
 #Copyright: Copyright (c) 2019
 #Created on 2019-10-08
-#Author:fredom
-#Version 1.0
+#Special Thanks: Tsuabsa
+#Author: fredom
+#Version  1.2.1
 #---------------------------------------------------------------------------------------------------
 
 from bs4 import BeautifulSoup
-from .BugReporter import BugReporter
 from .WebGeter import WebGeter
+from .BugReporter import BugReporter
 import time
-import os
-import datetime
 import json
 
 class steam250URLGeter :
     def __init__(self,raw_data) :
         self.raw_data = raw_data
+        self.num = len(self.raw_data.findAll(name = "span",attrs = {"class":"title"}))
         self.data = []
-        self.dataHandle()
+        #self.dataHandle()
 
     def dataHandle(self) :
-        for i in range(0,len(self.raw_data.findAll(name = "span",attrs = {"class":"title"}))):
+        for i in range(0,self.num):
             self.data.append([self.raw_data.findAll(name = "span",attrs = {"class":"title"})[i].find(name = "a").string,self.raw_data.findAll(name = "span",attrs = {"class":"title"})[i].find(name = "a")['href'].replace("\n",""),self.raw_data.findAll(name = "span",attrs = {"class":"score"})[i].string])#0.名字 1.url 2.评分
 
     def outputData(self) :
@@ -115,7 +115,7 @@ class steamTop100URLGeter :
     def __init__(self,raw_data) :
         self.raw_data = raw_data
         self.data = []
-        self.dataHandle()
+        #self.dataHandle()
 
     def dataHandle(self) :
         self.data.append(self.raw_data.findAll(name="td", attrs={"class" :"users_count"})[0].string) #[0] 当前steam同时在线的人数
