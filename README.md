@@ -1,6 +1,12 @@
-# V1.0.2更新 
+# V1.2.1更新
+* 重写 WebGeter.py
 * 修复部分bug
 * 包名改为Es
+* **去掉 steam250URLGeter 和 steamTop100URLGeter 在在构造时调用的dataHandle()方法，这意味着现在需要手动调用**
+* 部分代码重构与逻辑优化
+
+# 特别鸣谢
+* Tsubasa
 
 # Emerald-spray
 方便的将steam商店页面信息解析出来，并可保存于本地
@@ -47,7 +53,8 @@ demo = steam250URLGeter()
 
 有 dataHandle() 和 outputData() 两个方法
 但通常只需要调用主动调用outputData()方法用于输出
-dataHandle() 会自动调用
+~~dataHandle() 会自动调用~~
+dataHandle()也需要调用主动调用
 
 同时生成成员 self.data 类型为列表
 
@@ -57,7 +64,8 @@ dataHandle() 会自动调用
 
 接受BeautifulSoup类作为参数，也可使用 WebGeter 模块的 self.raw_data作为参数
 
-基本和 steam250URLGeter 使用方法一致~
+基本和 steam250URLGeter 使用方法一致~ 
+dataHandle()也需要调用主动调用
 
 ### detailsDataGeter
 用于获取steam商店页面详细信息，需要主动调用
