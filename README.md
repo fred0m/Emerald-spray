@@ -106,7 +106,7 @@ pip install Emeraldspray
 ```language
 from Es import *
 ```
-不要使用
+~~不要使用~~现在已经可以正常使用
 ```language
 import Es
 ```
