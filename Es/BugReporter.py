@@ -3,7 +3,7 @@
 #Copyright: Copyright (c) 2019
 #Created on 2019-10-08
 #Author: fredom
-#Version 1.2.1
+#Version 2.0.1
 #---------------------------------------------------------------------------------------------------
 import requests
 import os
