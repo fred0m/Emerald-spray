@@ -107,7 +107,6 @@ class detailsDataGeter :
                     BugReporter()
     def detailsGeterFixed(self) :
         self.data['Gamename'] = self.raw_data.find(name = "div",attrs = {"class":"apphub_AppName"}).string
-        self.ifBanGame()
         self.data['Developer'] = self.raw_data.find(name = "div",attrs = {"class":"dev_row"}).find(name = "a").string #开发商
         self.data['Recent Reviews'] = self.raw_data.findAll(name = "div",attrs = {"class":"summary column"})[0].find(name = "span").string #近期评论
         self.data['Overall Reviews'] = self.raw_data.findAll(name = "div",attrs = {"class":"summary column"})[1].find(name = "span").string #总体评论
