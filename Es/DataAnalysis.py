@@ -105,11 +105,26 @@ class detailsDataGeter :
                     with open("BannedGame.bin","a",encoding="utf-8") as f :
                         f.write(self.data['Gamename']+"\n")
                     BugReporter()
-        def outputData(self) :
-            if not (os.path.exists(str(datetime.date.today()))):
-                os.makedirs(str(datetime.date.today()))
-            with open(str(datetime.date.today())+"/"+data['Gamename'].replace(" ","_").replace(":","_").replace("\\","_").replace("/","_").replace("*","_").replace('"',"_").replace("?","_").replace("<","_").replace(">","_").replace("|","_")+'.json', 'w') as outfile:
-                json.dump(self.data, outfile)
+    def detailsGeterFixed(self) :
+        self.data['Gamename'] = self.raw_data.find(name = "div",attrs = {"class":"apphub_AppName"}).string
+        self.ifBanGame()
+        self.data['Developer'] = self.raw_data.find(name = "div",attrs = {"class":"dev_row"}).find(name = "a").string #开发商
+        self.data['Recent Reviews'] = self.raw_data.findAll(name = "div",attrs = {"class":"summary column"})[0].find(name = "span").string #近期评论
+        self.data['Overall Reviews'] = self.raw_data.findAll(name = "div",attrs = {"class":"summary column"})[1].find(name = "span").string #总体评论
+        self.data['Description'] = self.raw_data.find(name = "div",attrs = {"class":"game_description_snippet"}).string.strip('\t').strip('\t').strip('\r').strip('\n').strip('\t') #简介
+        self.data['Price'] = self.raw_data.find(name = "div",attrs = {"class":"game_purchase_price price"}).string.strip('\t').strip('\r').strip('\n').strip('\t')#价格
+        temp=""
+
+        for i in range(0,(len(self.raw_data.findAll(name = "a",attrs = {"class":"app_tag"}))-1)):
+            temp += (self.raw_data.findAll(name = "a",attrs = {"class":"app_tag"})[i].string.strip('\t').strip('\r').strip('\n').strip('\t').strip(',').strip('，') + " ")
+
+        self.data['Tag'] = temp
+
+    def outputData(self) :
+        if not (os.path.exists(str(datetime.date.today()))):
+            os.makedirs(str(datetime.date.today()))
+        with open(str(datetime.date.today())+"/"+data['Gamename'].replace(" ","_").replace(":","_").replace("\\","_").replace("/","_").replace("*","_").replace('"',"_").replace("?","_").replace("<","_").replace(">","_").replace("|","_")+'.json', 'w') as outfile:
+            json.dump(self.data, outfile)
 
 class steamTop100URLGeter :
     def __init__(self,raw_data) :
