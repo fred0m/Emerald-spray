@@ -6,7 +6,7 @@
 #Version 1.2.1
 #---------------------------------------------------------------------------------------------------
 __all__ = ['BugReporter', 'DataAnalysis', 'WebGeter']
-__version__ = "2.0.2"
+__version__ = "2.0.3"
 from .BugReporter import *
 from .DataAnalysis import *
 from .WebGeter import *

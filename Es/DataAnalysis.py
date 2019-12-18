@@ -39,6 +39,12 @@ class detailsDataGeter :
         self.data = {}
         self.raw_data = WebGeter(self.URL).raw_data
 
+    def ifDiscount(self):
+        if (self.raw_data.findAll(name="div",attrs={"class":"game_purchase_price price"})==[]):
+            return True
+        else:
+            return False
+
     def ifBanGame(self) :
         banlist = []
         for line in open("BannedGame.bin",'r',encoding='utf-8'):
@@ -58,7 +64,10 @@ class detailsDataGeter :
         self.data['Recent Reviews'] = self.raw_data.findAll(name = "div",attrs = {"class":"summary column"})[0].find(name = "span").string #近期评论
         self.data['Overall Reviews'] = self.raw_data.findAll(name = "div",attrs = {"class":"summary column"})[1].find(name = "span").string #总体评论
         self.data['Description'] = self.raw_data.find(name = "div",attrs = {"class":"game_description_snippet"}).string.strip('\t').strip('\t').strip('\r').strip('\n').strip('\t') #简介
-        self.data['Price'] = self.raw_data.find(name = "div",attrs = {"class":"game_purchase_price price"}).string.strip('\t').strip('\r').strip('\n').strip('\t')#价格
+        if(self.ifDiscount()):
+            self.data['Price'] = self.raw_data.find(name = "div",attrs = {"class":"game_purchase_price price"}).string.strip('\t').strip('\r').strip('\n').strip('\t')#价格
+        else:
+            self.data['Price'] = self.raw_data.find(name = "div",attrs = {"class":"discount_final_price"}).string.strip('\t').strip('\r').strip('\n').strip('\t')#价格
         temp=""
 
         for i in range(0,(len(self.raw_data.findAll(name = "a",attrs = {"class":"app_tag"}))-1)):
@@ -111,7 +120,12 @@ class detailsDataGeter :
         self.data['Recent Reviews'] = self.raw_data.findAll(name = "div",attrs = {"class":"summary column"})[0].find(name = "span").string #近期评论
         self.data['Overall Reviews'] = self.raw_data.findAll(name = "div",attrs = {"class":"summary column"})[1].find(name = "span").string #总体评论
         self.data['Description'] = self.raw_data.find(name = "div",attrs = {"class":"game_description_snippet"}).string.strip('\t').strip('\t').strip('\r').strip('\n').strip('\t') #简介
-        self.data['Price'] = self.raw_data.find(name = "div",attrs = {"class":"game_purchase_price price"}).string.strip('\t').strip('\r').strip('\n').strip('\t')#价格
+
+        if(self.ifDiscount()):
+            self.data['Price'] = self.raw_data.find(name = "div",attrs = {"class":"game_purchase_price price"}).string.strip('\t').strip('\r').strip('\n').strip('\t')#价格
+        else:
+            self.data['Price'] = self.raw_data.find(name = "div",attrs = {"class":"discount_final_price"}).string.strip('\t').strip('\r').strip('\n').strip('\t')#价格
+
         temp=""
 
         for i in range(0,(len(self.raw_data.findAll(name = "a",attrs = {"class":"app_tag"}))-1)):
